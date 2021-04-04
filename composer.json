@@ -9,7 +9,7 @@
         "source": "https://github.com/omatamix/container"
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4,
         "ocramius/proxy-manager": "^2.11",
         "psr/container": "^1.0|^2.0"
     },

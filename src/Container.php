@@ -32,13 +32,13 @@ use Psr\Container\ContainerInterface;
  */
 final class Container implements ContainerInterface
 {
-    /** @var \Omatamix\ContainerBuilder $builder */
+    /** @var \Omatamix\ContainerBuilder $builder The container builder. */
     private $container;
 
     /**
      * Construct a new compatible psr-11 container.
      *
-     * @param \Omatamix\ContainerBuilder $builder
+     * @param \Omatamix\ContainerBuilder $builder The container builder.
      *
      * @return void Returns nothing.
      */

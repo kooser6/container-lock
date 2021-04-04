@@ -28,6 +28,6 @@ namespace Omatamix\Container\Exception;
 /**
  * The interface for all exceptions.
  */ 
-interface ExceptionInterface extends \Throwable
+interface ExceptionInterface
 {
 }

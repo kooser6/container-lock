@@ -1,5 +1,5 @@
 {
-    "name": "omatamix/containers",
+    "name": "omatamix/container",
     "description": "A psr-11 compliant container.",
     "homepage": "https://github.com/omatamix/container",
     "keywords": [],
@@ -13,7 +13,7 @@
         "ocramius/proxy-manager": "^2.11",
         "psr/container": "^1.0|^2.0"
     },
-    "provides": {
+    "provide": {
         "psr/container-implementation": "^1.0|^2.0"
     },
     "autoload": {

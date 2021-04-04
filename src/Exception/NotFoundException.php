@@ -30,6 +30,6 @@ use Psr\Container\NotFoundExceptionInterface;
 /**
  * A non-existing id.
  */ 
-class NotFoundException implements ExceptionInterface, NotFoundExceptionInterface, \Throwable
+class NotFoundException extends \Throwable implements ExceptionInterface, NotFoundExceptionInterface
 {
 }

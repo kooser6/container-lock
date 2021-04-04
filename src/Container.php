@@ -32,17 +32,17 @@ use Psr\Container\ContainerInterface;
  */
 final class Container implements ContainerInterface
 {
-    /** @var \Omatamix\ContainerBuilder $builder The container builder. */
+    /** @var \Omatamix\BuilderInterface $builder The container builder. */
     private $builder;
 
     /**
      * Construct a new compatible psr-11 container.
      *
-     * @param \Omatamix\ContainerBuilder $builder The container builder.
+     * @param \Omatamix\BuilderInterface $builder The container builder.
      *
      * @return void Returns nothing.
      */
-    public function __construct(ContainerBuilder $builder)
+    public function __construct(BuilderInterface $builder)
     {
         if (!($builder instanceof \ArrayAccess)) {
             throw new Exception\ContainerException('This container builder does not implement `\ArrayAccess`.');

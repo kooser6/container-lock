@@ -33,7 +33,7 @@ use Psr\Container\ContainerInterface;
 final class Container implements ContainerInterface
 {
     /** @var \Omatamix\ContainerBuilder $builder The container builder. */
-    private $container;
+    private $builder;
 
     /**
      * Construct a new compatible psr-11 container.
@@ -44,7 +44,7 @@ final class Container implements ContainerInterface
      */
     public function __construct(ContainerBuilder $builder)
     {
-        $this->container = $builder;
+        $this->builder = $builder;
     }
 
     /**
@@ -55,11 +55,11 @@ final class Container implements ContainerInterface
      * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
      * @throws ContainerExceptionInterface Error while retrieving the entry.
      *
-     * @return mixed Entry.
+     * @return mixed Returns the entry.
      */
     public function get(string $id)
     {
-        return $this->container[$id];
+        return $this->builder[$id];
     }
 
     /**
@@ -71,10 +71,10 @@ final class Container implements ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @return bool
+     * @return bool Returns true if the container contains the entry and false if not.
      */
-    public function has(string $id)
+    public function has(string $id): bool
     {
-        return isset($this->container[$id]);
+        return isset($this->builder[$id]);
     }
 }

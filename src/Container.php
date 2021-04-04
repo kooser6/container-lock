@@ -25,6 +25,7 @@
 
 namespace Omatamix\Container;
 
+use ArrayAccess;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -44,6 +45,9 @@ final class Container implements ContainerInterface
      */
     public function __construct(ContainerBuilder $builder)
     {
+        if (!($builder instanceof ArrayAccess)) {
+            throw new Exception\ContainerException('This container builder does not implement `\ArrayAccess`.');
+        }
         $this->builder = $builder;
     }
 

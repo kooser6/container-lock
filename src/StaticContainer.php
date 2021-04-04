@@ -50,10 +50,15 @@ class Container
     /**
      * Get the container instance.
      *
+     * @throws Psr\Container\ContainerExceptionInterface If no container was set or the container was cleared.
+     *
      * @return \Psr\Container\ContainerInterface Returns the container instance.
      */
     public static function getInstance(): ContainerInterface
     {
+        if (is_null(self::$container)) {
+            throw new Exception\ContainerException('No container was set or the container was cleared.');
+        }
         return self::$container;
     }
 

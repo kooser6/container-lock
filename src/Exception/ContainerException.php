@@ -30,6 +30,6 @@ use Psr\Container\ContainerExceptionInterface;
 /**
  * Exceptions directly thrown by the container.
  */ 
-class ContainerException implements ExceptionInterface, ContainerExceptionInterface, \Throwable
+class ContainerException extends \Throwable implements ExceptionInterface, ContainerExceptionInterface
 {
 }

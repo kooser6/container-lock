@@ -18,7 +18,8 @@ class BuilderTest extends TestCase
         $builder = new ContainerBuilder();
         $builder['name'] = 'Nicholas';
         $this->assertEquals($builder['name'], 'Nicholas');
-        unset($builder['name']);
         $this->assertTrue(isset($builder['name']));
+        unset($builder['name']);
+        $this->assertTrue(!isset($builder['name']));
     }
 }

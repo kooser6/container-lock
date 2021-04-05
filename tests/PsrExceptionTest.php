@@ -2,9 +2,17 @@
 
 namespace Omatamix\Container\Test;
 
+use Omatamix\Container\BuilderInterface;
 use Omatamix\Container\Container;
 use Omatamix\Container\Exception\ContainerException;
 use PHPUnit\Framework\TestCase;
+
+/**
+ * Test class.
+ */
+class Baz implements BuilderInterface
+{
+}
 
 /**
  * Test the container builder.

@@ -139,14 +139,10 @@ class BuilderTest extends TestCase
     public function testLazyService(): void
     {
         $builder = new ContainerBuilder();
-        $builder['foo'] = $builder->service($builder->lazy(function ($c) {
-            return new Foo();
-        }));
+        $builder['foo'] = $builder->service($builder->lazy(new Foo()));
         $this->assertTrue(isset($builder['foo']));
         $this->assertEquals($builder['foo']->num, 5);
-        $builder['bar'] = $builder->service($builder->lazy(function ($c) {
-            return new Bar();
-        }));
+        $builder['bar'] = $builder->service($builder->lazy(new Bar()));
         $this->assertTrue(isset($builder['bar']));
         $this->assertEquals($builder['bar']->num, 9);
         $builder['dos'] = $builder->service(function ($c) {

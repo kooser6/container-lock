@@ -2,6 +2,7 @@
 
 namespace Omatamix\Container\Test;
 
+use Omatamix\Container\ContainerBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**

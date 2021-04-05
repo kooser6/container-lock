@@ -22,6 +22,11 @@
         },
         "files": ["./bootstrap.php"]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Omatamix\\Container\\Tests\\": "./tests"
+        }
+    }
     "require-dev": {
         "phpunit/phpunit": "^9.0"
     },

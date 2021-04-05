@@ -134,7 +134,7 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
     {
         if ($this->offsetExists($id)) {
             if (is_object($this->values[$id]) && isset($this->services[$this->values[$id]])) {
-                unset($this->services[$this->values[$id]]);
+                unset($this->services[$this->values[$id]], $this->protected[$id]);
             }
             unset($this->values[$id], $this->frozen[$id], $this->raw[$id]);
         }

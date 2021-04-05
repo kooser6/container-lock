@@ -84,7 +84,7 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
      */
     public function offsetSet($id, $value)
     {
-        if (!is_string($key)) {
+        if (!is_string($id)) {
             throw new Exception\ContainerException('Error while setting value.');
         } elseif (isset($this->frozen[$id])) {
             throw new Exception\ContainerException(sprintf('This `%s` identifier is frozen.', $id));

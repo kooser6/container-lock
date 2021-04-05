@@ -25,6 +25,9 @@
 
 namespace Omatamix\Container;
 
+use ProxyManager\Factory\LazyLoadingValueHolderFactory;
+use ProxyManager\Proxy\LazyLoadingInterface;
+
 /**
  * A builder to help build psr-11 containers.
  */
@@ -42,6 +45,9 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
     /** @var array $protected */
     private $protected = [];
 
+    /** @var \ProxyManager\Factory\LazyLoadingValueHolderFactory $factory The lazy-load factory. */
+    private $factory;
+
     /** @var \SplObjectStorage $services A container for our builder values. */
     private $services;
 
@@ -54,6 +60,7 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
      */
     public function __construct(array $values = [])
     {
+        $this->factory = new LazyLoadingValueHolderFactory();
         $this->services = new \SplObjectStorage();
         foreach ($values as $key => $value) {
             if (!is_string($key)) {
@@ -156,8 +163,20 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
         return [$callable, $protect];
     }
 
-    public function lazy($callable)
+    /**
+     * Lazy load a service definition.
+     *
+     * @param string $object A closure callable or invokable object in a string.
+     *
+     * @return array Returns the callable as a proxy.
+     */
+    public function lazy(string $object)
     {
-        //
+        $initializer = function (&$wrappedObject, LazyLoadingInterface $proxy, $method, array $parameters, &$initializer) {
+            $initializer = null;
+            $wrappedObject = $callable;
+            return true;
+        };
+        return $this->factory->createProxy($object, $initializer);
     }
 }

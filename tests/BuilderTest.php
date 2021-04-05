@@ -15,7 +15,7 @@ class BuilderTest extends TestCase
      */
     public function testString(): void
     {
-        $builder = ContainerBuilder();
+        $builder = new ContainerBuilder();
         $builder['name'] = 'Nicholas';
         $this->assertEquals($builder['name'], 'Nicholase');
         unset($builder['name']);

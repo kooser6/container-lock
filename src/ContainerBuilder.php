@@ -170,13 +170,14 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
      *
      * @return array Returns the callable as a proxy.
      */
-    public function lazy(string $object)
+    public function lazy($callable)
     {
+        $class = get_class($callable);
         $initializer = function (&$wrappedObject, LazyLoadingInterface $proxy, $method, array $parameters, &$initializer) {
             $initializer = null;
             $wrappedObject = $callable;
             return true;
         };
-        return $this->factory->createProxy($object, $initializer);
+        return $this->factory->createProxy($class, $initializer);
     }
 }

@@ -7,6 +7,42 @@ use Omatamix\Container\ContainerBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * Test class.
+ */
+class Foo
+{
+    public $num = 5
+}
+
+/**
+ * Test class.
+ */
+class Bar
+{
+    public $num = 9
+}
+
+/**
+ * Test class.
+ */
+class Dos
+{
+    private $foo;
+    private $bar;
+    
+    public function __construct(Foo $foo, Bar $bar)
+    {
+        $this->foo = $foo;
+        $this->bar = $bar;
+    }
+
+    public function add()
+    {
+        return $foo->num + $bar->num;
+    }
+}
+
+/**
  * Test the container builder.
  */
 class BuilderTest extends TestCase
@@ -79,6 +115,20 @@ class BuilderTest extends TestCase
      */
     public function testService(): void
     {
-        //
+        $builder['foo'] = $builder->service(function ($c) {
+            return new Foo();
+        });
+        $this->assertTrue(isset($builder['foo']));
+        $this->assertEquals($builder['foo']->num, 5);
+        $builder['bar'] = $builder->service(function ($c) {
+            return new Bar();
+        });
+        $this->assertTrue(isset($builder['bar']));
+        $this->assertEquals($builder['bar']->num, 9);
+        $builder['dos'] = $builder->service(function ($c) {
+            return new Bar($c['foo'], $c['bar']);
+        });
+        $this->assertTrue(isset($builder['bar']));
+        $this->assertEquals($builder['dos']->add(), 14);
     }
 }

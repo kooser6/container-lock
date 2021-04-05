@@ -38,7 +38,7 @@ class Dos
 
     public function add()
     {
-        return $foo->num + $bar->num;
+        return $this->foo->num + $this->bar->num;
     }
 }
 

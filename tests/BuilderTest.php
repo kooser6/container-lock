@@ -31,4 +31,46 @@ class BuilderTest extends TestCase
         $this->assertEquals($psrContainer->get('isDeveloper'), 'Yes');
         $this->assertTrue(!$psrContainer->has('randomId'));
     }
+
+    /**
+     * @return void Returns nothing.
+     */
+    public function testInt(): void
+    {
+        $builder = new ContainerBuilder();
+        $builder['num'] = 1;
+        $this->assertEquals($builder['num'], 1);
+        $this->assertTrue(isset($builder['num']));
+        unset($builder['num']);
+        $this->assertTrue(!isset($builder['num']));
+        $builder['num1'] = 1;
+        $builder['num2'] = 2;
+        $psrContainer = new Container($builder);
+        $this->assertTrue($psrContainer->has('num1'));
+        $this->assertTrue($psrContainer->has('num2'));
+        $this->assertEquals($psrContainer->get('num1'), 1);
+        $this->assertEquals($psrContainer->get('num2'), 2);
+        $this->assertTrue(!$psrContainer->has('randomId'));
+    }
+
+    /**
+     * @return void Returns nothing.
+     */
+    public function testFloat(): void
+    {
+        $builder = new ContainerBuilder();
+        $builder['float'] = 1.11;
+        $this->assertEquals($builder['float'], 1.11);
+        $this->assertTrue(isset($builder['float']));
+        unset($builder['float']);
+        $this->assertTrue(!isset($builder['float']));
+        $builder['float1'] = 1.11;
+        $builder['float2'] = 2.22;
+        $psrContainer = new Container($builder);
+        $this->assertTrue($psrContainer->has('float1'));
+        $this->assertTrue($psrContainer->has('float2'));
+        $this->assertEquals($psrContainer->get('float1'), 1.11);
+        $this->assertEquals($psrContainer->get('float2'), 2.22);
+        $this->assertTrue(!$psrContainer->has('randomId'));
+    }
 }

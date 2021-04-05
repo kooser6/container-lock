@@ -153,4 +153,9 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
         $this->services->attach($callable);
         return [$callable, $protect];
     }
+
+    public function lazy($callable)
+    {
+        //
+    }
 }

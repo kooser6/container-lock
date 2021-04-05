@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class Foo
 {
-    public $num = 5
+    public $num = 5;
 }
 
 /**
@@ -19,7 +19,7 @@ class Foo
  */
 class Bar
 {
-    public $num = 9
+    public $num = 9;
 }
 
 /**

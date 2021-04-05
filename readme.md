@@ -1,2 +1,2 @@
 # container
-A psr-11 compliant container. https://www.php-fig.org/psr/psr-11/
+A small psr-11 compliant container that is very powerful.

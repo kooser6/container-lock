@@ -120,16 +120,16 @@ class BuilderTest extends TestCase
             return new Foo();
         });
         $this->assertTrue(isset($builder['foo']));
-        // $this->assertEquals($builder['foo']->num, 5);
+        $this->assertEquals($builder['foo']->num, 5);
         $builder['bar'] = $builder->service(function ($c) {
             return new Bar();
         });
         $this->assertTrue(isset($builder['bar']));
-        // $this->assertEquals($builder['bar']->num, 9);
+        $this->assertEquals($builder['bar']->num, 9);
         $builder['dos'] = $builder->service(function ($c) {
-            return new Bar($c['foo'], $c['bar']);
+            return new Dos($c['foo'], $c['bar']);
         });
-        $this->assertTrue(isset($builder['bar']));
+        $this->assertTrue(isset($builder['dos']));
         $this->assertEquals($builder['dos']->add(), 14);
     }
 }

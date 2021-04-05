@@ -33,5 +33,5 @@ interface LazyInterface
     /**
      * {@inheritdoc}
      */
-    public function lazy(string $object);
+    public function lazy($callable);
 }

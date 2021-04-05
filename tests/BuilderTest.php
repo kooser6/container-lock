@@ -115,6 +115,7 @@ class BuilderTest extends TestCase
      */
     public function testService(): void
     {
+        $builder = new ContainerBuilder();
         $builder['foo'] = $builder->service(function ($c) {
             return new Foo();
         });

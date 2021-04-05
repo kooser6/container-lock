@@ -73,4 +73,12 @@ class BuilderTest extends TestCase
         $this->assertEquals($psrContainer->get('float2'), 2.22);
         $this->assertTrue(!$psrContainer->has('randomId'));
     }
+
+    /**
+     * @return void Returns nothing.
+     */
+    public function testService(): void
+    {
+        //
+    }
 }

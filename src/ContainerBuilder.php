@@ -106,8 +106,8 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
         if (!isset($this->values[$id])) {
             throw new Exception\NotFoundException(sprintf('No entry was found for `%s` identifier.', $id));
         } elseif (isset($this->raw[$id])
-            || !($callable instanceof \Closure)
-            || !method_exists($callable, '__invoke')
+            || !($this->values[$id] instanceof \Closure)
+            || !method_exists($this->values[$id], '__invoke')
             || $this->protected[$id]) {
             return $this->values[$id];
         } elseif (isset($this->services[$this->values[$id]])) {

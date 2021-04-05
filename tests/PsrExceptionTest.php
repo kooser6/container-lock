@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test the container builder.
  */
-class BuilderTest extends TestCase
+class PsrExceptionTest extends TestCase
 {
     /**
      * @return void Returns nothing.

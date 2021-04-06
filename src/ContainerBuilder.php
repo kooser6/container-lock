@@ -31,7 +31,7 @@ use ProxyManager\Proxy\LazyLoadingInterface;
 /**
  * A builder to help build psr-11 containers.
  */
-class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
+class ContainerBuilder implements BuilderInterface, \ArrayAccess
 {
     /** @var array $frozen */
     private $raw = [];
@@ -161,23 +161,5 @@ class ContainerBuilder implements BuilderInterface, LazyInterface, \ArrayAccess
         }
         $this->services->attach($callable);
         return [$callable, $protect];
-    }
-
-    /**
-     * Lazy load a service definition.
-     *
-     * @param string $object A closure callable or invokable object in a string.
-     *
-     * @return array Returns the callable as a proxy.
-     */
-    public function lazy($callable)
-    {
-        $class = get_class($callable);
-        $initializer = function (&$wrappedObject, LazyLoadingInterface $proxy, $method, array $parameters, &$initializer) {
-            $initializer = null;
-            $wrappedObject = $callable;
-            return true;
-        };
-        return $this->factory->createProxy($class, $initializer);
     }
 }
